@@ -1,0 +1,6 @@
+{% for subject in subjects %}
+    <a href="{% url 'subject_edit' subject.id %}">ID {{ subject.id }}</a>
+    Імʼя {{ subject.name }} Опис {{ subject.description }} Кількість кредитів {{ subject.score }}
+
+    <br>
+{% endfor %}
