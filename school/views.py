@@ -11,7 +11,7 @@ def teacher_form(request):
     if request.method == "GET":
         form = TeacherForm()
         return render(request, "teacher_form.html", {"form": form})
-    form = TeacherForm(request.POST)
+    form = TeacherForm(request.POST, request.FILES)
     if form.is_valid():
         form.save()
         return redirect(reverse("teacher_edit", args=[form.instance.pk]))
@@ -25,7 +25,7 @@ def teacher_edit(request, pk):
         form = TeacherForm(instance=teacher)
         return render(request, "teacher_edit.html", {"form": form})
 
-    form = TeacherForm(request.POST, instance=teacher)
+    form = TeacherForm(request.POST, request.FILES, instance=teacher)
     if form.is_valid():
         form.save()
         return redirect(reverse("teacher_edit", args=[pk]))

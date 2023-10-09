@@ -13,6 +13,7 @@ class Subject(models.Model):
 class Teachers(models.Model):
     first_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=30, null=True)
+    photo = models.ImageField(upload_to="teachers_photos", null=True)
 
     subjects = models.ManyToManyField(Subject, related_name="teachers")
 
